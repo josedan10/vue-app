@@ -1,5 +1,6 @@
 <template>
     <div class="users-container">
+        <back-component></back-component>
         <h2 class="section-title">Users</h2>
 
         <table v-if="!isLoading" class="users-list">
@@ -16,11 +17,10 @@
                     <td>{{user.username}}</td>
                     <td>{{user.name}}</td>
                     <td>{{user.email}}</td>
-                    <td>{{}}</td>
+                    <td>{{addressToString(user.address)}}</td>
                     <td>{{user.phone}}</td>
                     <td>
                         <router-link :to="`/users/${user.id}`">Show</router-link>
-                        <button>Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -33,10 +33,14 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import UserHelper from '../../helpers/user'
+import BackComponent from './BackComponent'
 
 export default {
     name: 'UsersList',
     extends: UserHelper,
+    components: {
+        BackComponent,
+    },
     data: () => ({
         isLoading: true,
     }),
@@ -53,9 +57,13 @@ export default {
     mounted () {
         const vm = this
        
-        vm.getUsers().then(() => {
-            setTimeout(() => vm.isLoading = false, 500)
-        })
+        vm.getUsers()
+            .then(() => {
+                setTimeout(() => vm.isLoading = false, 500)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 }
 </script>

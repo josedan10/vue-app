@@ -13,7 +13,7 @@
 
         <div class="login-wrapper">
             <button class="btn">Register</button>
-            <button class="btn">Login</button>
+            <router-link to="/users" class="btn">Login</router-link>
         </div>
     </header>
 </template>
@@ -78,6 +78,7 @@ export default {
                 margin: 0 15px;
                 background: none;
                 border: 0;
+                font-size: 1rem;
                 color: $white;
                 text-decoration: underline;
             }
