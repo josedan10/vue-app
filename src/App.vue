@@ -1,21 +1,19 @@
 <template>
   <div id="app">
-    <main
-      class="app-wrapper"
-    >
-      <img alt="Vue logo" src="./assets/logo.png">
-      <HelloWorld msg="Welcome to Your Vue.js App"/>
-    </main>
+    <HeaderComponent></HeaderComponent>
+    <PresentationComponent></PresentationComponent>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PresentationComponent from './components/PresentationComponent.vue'
+import HeaderComponent from './components/HeaderComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    PresentationComponent,
+    HeaderComponent
   }
 }
 </script>
@@ -23,17 +21,37 @@ export default {
 <style lang="scss">
 @import './scss/_variables';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+button {
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  overflow-x: hidden;
+  min-height: 100vh;
+  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 
-.app-wrapper {
-  max-width: 1200px;
-  background: linear-gradient(to right, $primary-blue, $secondary-blue);
+  @media only screen and (max-width: 900px) {
+    padding: 0 2rem;
+  }
 }
 </style>
