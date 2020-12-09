@@ -4,6 +4,7 @@
     <PresentationComponent></PresentationComponent>
     <BenefitsComponent></BenefitsComponent>
     <GlobalizationComponent></GlobalizationComponent>
+    <FooterComponent></FooterComponent>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import HeaderComponent from './components/HeaderComponent.vue'
 import PresentationComponent from './components/PresentationComponent.vue'
 import BenefitsComponent from './components/BenefitsComponent.vue'
 import GlobalizationComponent from './components/GlobalizationComponent.vue'
+import FooterComponent from './components/FooterComponent.vue'
 
 export default {
   name: 'App',
@@ -20,6 +22,7 @@ export default {
     PresentationComponent,
     BenefitsComponent,
     GlobalizationComponent,
+    FooterComponent,
   }
 }
 </script>
