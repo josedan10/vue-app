@@ -1,29 +1,12 @@
 <template>
   <div id="app">
-    <HeaderComponent></HeaderComponent>
-    <PresentationComponent></PresentationComponent>
-    <BenefitsComponent></BenefitsComponent>
-    <GlobalizationComponent></GlobalizationComponent>
-    <FooterComponent></FooterComponent>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HeaderComponent from './components/HeaderComponent.vue'
-import PresentationComponent from './components/PresentationComponent.vue'
-import BenefitsComponent from './components/BenefitsComponent.vue'
-import GlobalizationComponent from './components/GlobalizationComponent.vue'
-import FooterComponent from './components/FooterComponent.vue'
-
 export default {
   name: 'App',
-  components: {
-    HeaderComponent,
-    PresentationComponent,
-    BenefitsComponent,
-    GlobalizationComponent,
-    FooterComponent,
-  }
 }
 </script>
 
@@ -54,6 +37,16 @@ button {
 
   &:hover {
     cursor: pointer;
+  }
+
+  &.dashboard-btn {
+    min-width: 100px;
+    height: 40px;
+    padding: 0 2rem;
+    margin-right: 1rem;
+    border: 1px solid $primary-purple;
+    border-radius: 4px;
+    font-weight: bold;
   }
 }
 
