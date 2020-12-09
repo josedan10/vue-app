@@ -144,15 +144,15 @@ export default {
 
     .form-input {
         border-radius: 6px;
-        border: 1px solid $primary-blue;
+        border: 1.5px solid $black;
         padding: 1rem 1.2rem;
-        color: $primary-blue;
+        color: $black;
         transition: all ease .3s;
         margin-left: 10px;
 
         &:focus {
             transition: all ease .3s;
-            border-bottom: 1px solid $primary-purple;
+            border: 1.5px solid $primary-purple;
             color: $primary-purple;
             outline: none;
         }

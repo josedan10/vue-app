@@ -1,6 +1,7 @@
 <template>
     <div class="back">
         <button class="dashboard-btn" @click="back">Back</button>
+        <button class="dashboard-btn" @click="home">Home</button>
     </div>
 </template>
 
@@ -10,6 +11,9 @@ export default {
     methods: {
         back () {
             this.$router.go(-1)
+        },
+        home () {
+            this.$router.push('/')
         }
     }
 }
