@@ -26,7 +26,7 @@
                     @click="handleEdit"
                 >Edit</button>
                 <button
-                    class="dashboard-btn"
+                    class="dashboard-btn danger"
                     @click="onDeleteUser"
                 >Delete</button>
             </div>
@@ -36,19 +36,22 @@
         >
             <div class="col">
                 <label>Username: </label>
-                <input class="form-input" placeholder="Username" v-model="editUserData.username" />
+                <input id="username" class="form-input" @change="onChangeInput($event)" placeholder="Username" v-model="editUserData.username" />
+                <span class="error">{{ validationErrors.username }}</span>
             </div>
             <div class="col">
                 <label>Name: </label>
-                <input class="form-input" placeholder="Name" v-model="editUserData.name" />
+                <input id="name" class="form-input" @change="onChangeInput($event)" placeholder="Name" v-model="editUserData.name" />
+                <span class="error">{{ validationErrors.name }}</span>
             </div>
             <div class="col">
                 <label>Email: </label>
-                <input class="form-input" placeholder="Email" v-model="editUserData.email" />
+                <input id="email" class="form-input" @change="onChangeInput($event)" placeholder="Email" v-model="editUserData.email" />
+                <span class="error">{{ validationErrors.email }}</span>
             </div>
             <div class="col">
                 <label>Phone: </label>
-                <input class="form-input" placeholder="Phone" v-model="editUserData.phone" />
+                <input id="phone" class="form-input" @change="onChangeInput($event)" placeholder="Phone" v-model="editUserData.phone" />
             </div>
             <div class="col">
                 <label>Address: </label>
@@ -60,7 +63,7 @@
             </div>
 
             <div class="actions">
-                <button type="submit" @click="onSubmitEdit" class="dashboard-btn">Save User</button>
+                <button type="submit" @click="onSubmitEdit" class="dashboard-btn" :disabled="!notEmptyFields">Save User</button>
                 <button type="reset" @click="editUser = false" class="dashboard-btn">Discard Changes </button>
             </div>
         </form>
@@ -83,8 +86,24 @@ export default {
         user: null, 
         isLoading: true,
         editUser: false,
-        editUserData: {}
+        editUserData: {},
+        validationErrors: {
+            username: '',
+            name: '',
+            email: '',
+            phone: '',
+        }
     }),
+    computed: {
+        notEmptyFields: function () {
+            return (
+                this.editUserData.username &&
+                this.editUserData.email &&
+                this.editUserData.name &&
+                this.editUserData.phone
+            )
+        }
+    },
     methods: {
         ...mapActions([
             'getUserById',
@@ -98,11 +117,13 @@ export default {
         onSubmitEdit () {
             const vm = this
 
-            vm.updateUser(vm.editUserData)
-                .then((updatedUser) => {
-                    vm.editUser = false
-                    vm.user = {...updatedUser}
-                })
+            if (this.notEmptyFields) {
+                vm.updateUser(vm.editUserData)
+                    .then((updatedUser) => {
+                        vm.editUser = false
+                        vm.user = {...updatedUser}
+                    })
+            }
         },
         onDeleteUser () {
             const vm = this
@@ -110,7 +131,59 @@ export default {
             vm.deleteUser(vm.user.id)
                 .then(() => vm.$router.push('/users'))
                 .catch(err => console.log(err))
+        },
+        onChangeInput(e) {
+            // const vm = this
+            const inputName = e.target.id
+            const { value } = e.target
+
+            // Check type of validation
+            switch (inputName) {
+                case 'username':
+                    this.validateUsername(value)
+                    break;
+
+                case 'name':
+                    this.validateName(value)
+                    break;
+
+                case 'email':
+                    this.validateEmail(value)
+                    break;
+
+                default:
+                    break;
+            }
+
+        },
+
+        // Validations
+        validateUsername (username) {
+            // username cannot be empty
+            this.validationErrors.username = username.trim() ?  '' : 'Please fill this field'
+        },
+        validateName (name) {
+            // name cannot be empty
+            if (!name.trim()) {
+                this.validationErrors.name = 'Please fill this field'
+                return
+            } else if (!/\w/.test(name.trim())) {
+                this.validationErrors.name = 'Only letters and spaces are allowed'
+                return
+            } else {
+                this.validationErrors.name = ''
+            }
+        },
+        validateEmail (email) {
+            const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+            if (!emailRegex.test(email)) {
+                this.validationErrors.email = 'Please insert a valid email'
+            } else {
+                this.validationErrors.email = ''
+            }
         }
+        
     },
     mounted () {
         const vm = this
@@ -162,6 +235,10 @@ export default {
         .form-input {
             margin: 1rem 0;
         }
+    }
+
+    .error {
+        color: $red;
     }
 
     .actions {

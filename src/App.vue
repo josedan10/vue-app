@@ -51,7 +51,11 @@ button {
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 
     &.danger {
-      background-color: $red;
+      background: $red !important;
+    }
+
+    &:disabled {
+      background: #cecece !important;
     }
   }
 }
