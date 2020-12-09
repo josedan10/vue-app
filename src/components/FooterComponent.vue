@@ -3,41 +3,9 @@
         class="app-footer"
     >
         <div class="grid-container container">
-            <div class="col">
+            <div v-for="i in 4" :key="'footer-section-' + i" class="col">
                 <h3 class="col__title">Section here</h3>
                 <ul class="links-list">
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                </ul>
-            </div>
-            <div class="col">
-                <h3 class="col__title">Section here</h3>
-                <ul class="links-list">
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                </ul>
-            </div>
-            <div class="col">
-                <h3 class="col__title">Section here</h3>
-                <ul class="links-list">
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                </ul>
-            </div>
-            <div class="col">
-                <h3 class="col__title">Section here</h3>
-                <ul class="links-list">
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
-                    <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
                     <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
                     <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
                     <li class="list-item" ><a class="list-item__link" href="#">Link with long text</a></li>
