@@ -43,9 +43,14 @@ export default {
             .credit-card {
                 position: absolute;
                 z-index: 2;
-                bottom: -30%;
+                bottom: -200px;
                 max-width: 800px;
-                width: 60%;
+                width: 46%;
+    
+                @media only screen and (max-width: 600px) {
+                    width: 65%;
+                    bottom: -150px;
+                }
             }
         }
 

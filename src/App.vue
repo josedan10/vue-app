@@ -2,18 +2,21 @@
   <div id="app">
     <HeaderComponent></HeaderComponent>
     <PresentationComponent></PresentationComponent>
+    <BenefitsComponent></BenefitsComponent>
   </div>
 </template>
 
 <script>
-import PresentationComponent from './components/PresentationComponent.vue'
 import HeaderComponent from './components/HeaderComponent.vue'
+import PresentationComponent from './components/PresentationComponent.vue'
+import BenefitsComponent from './components/BenefitsComponent.vue'
 
 export default {
   name: 'App',
   components: {
+    HeaderComponent,
     PresentationComponent,
-    HeaderComponent
+    BenefitsComponent
   }
 }
 </script>
@@ -29,6 +32,14 @@ export default {
 
 .container {
   max-width: 1200px;
+  margin: 0 auto;
+  width: 100vw;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-size: 2.4rem;
+  margin-bottom: 1.8rem;
 }
 
 button {
@@ -49,6 +60,7 @@ button {
   display: flex;
   align-items: center;
   flex-direction: column;
+  color: $black;
 
   @media only screen and (max-width: 900px) {
     padding: 0 2rem;
