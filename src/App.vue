@@ -3,6 +3,7 @@
     <HeaderComponent></HeaderComponent>
     <PresentationComponent></PresentationComponent>
     <BenefitsComponent></BenefitsComponent>
+    <GlobalizationComponent></GlobalizationComponent>
   </div>
 </template>
 
@@ -10,13 +11,15 @@
 import HeaderComponent from './components/HeaderComponent.vue'
 import PresentationComponent from './components/PresentationComponent.vue'
 import BenefitsComponent from './components/BenefitsComponent.vue'
+import GlobalizationComponent from './components/GlobalizationComponent.vue'
 
 export default {
   name: 'App',
   components: {
     HeaderComponent,
     PresentationComponent,
-    BenefitsComponent
+    BenefitsComponent,
+    GlobalizationComponent,
   }
 }
 </script>
@@ -44,6 +47,7 @@ export default {
 
 button {
   outline: none;
+  border: 0;
 
   &:hover {
     cursor: pointer;
