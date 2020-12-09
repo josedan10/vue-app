@@ -3,17 +3,20 @@
         class="app-bar"
     >
         <img src="../assets/visa-logo.svg" alt="" class="logo">
-        <nav class="nav-bar">
-            <ul class="nav-menu">
-                <li class="nav-menu__item"><a class="nav-menu__item__link" href="#">Benefits</a></li>
-                <li class="nav-menu__item"><a class="nav-menu__item__link" href="#">Globalization</a></li>
-                <li class="nav-menu__item"><a class="nav-menu__item__link" href="#">Get your card</a></li>
-            </ul>
-        </nav>
 
-        <div class="login-wrapper">
-            <button class="btn">Register</button>
-            <router-link to="/users" class="btn">Login</router-link>
+        <div class="menu-wrapper" :class="{open: menuIsOpen}">
+            <nav class="nav-bar">
+                <ul class="nav-menu">
+                    <li class="nav-menu__item"><a class="nav-menu__item__link" href="#">Benefits</a></li>
+                    <li class="nav-menu__item"><a class="nav-menu__item__link" href="#">Globalization</a></li>
+                    <li class="nav-menu__item"><a class="nav-menu__item__link" href="#">Get your card</a></li>
+                </ul>
+            </nav>
+
+            <div class="login-wrapper">
+                <button class="btn">Register</button>
+                <router-link to="/users" class="btn">Login</router-link>
+            </div>
         </div>
     </header>
 </template>
@@ -21,7 +24,7 @@
 <script>
 export default {
     data: () => ({
-
+        menuIsOpen: false,
     })
 }
 </script>
@@ -40,6 +43,12 @@ export default {
         top: 0;
         z-index: 3;
         color: $white;
+
+        .menu-wrapper {
+            display: flex;
+            justify-content: space-between;
+            width: 70%;
+        }
 
         .logo {
             width: 85px;

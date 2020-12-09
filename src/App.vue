@@ -56,11 +56,13 @@ button {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   min-height: 100vh;
-  
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   color: $black;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 
   @media only screen and (max-width: 900px) {
     padding: 0 2rem;

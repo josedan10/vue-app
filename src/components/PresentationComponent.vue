@@ -44,7 +44,7 @@ export default {
                 position: absolute;
                 z-index: 2;
                 bottom: -200px;
-                max-width: 800px;
+                max-width: 500px;
                 width: 46%;
     
                 @media only screen and (max-width: 600px) {
