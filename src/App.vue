@@ -44,9 +44,15 @@ button {
     height: 40px;
     padding: 0 2rem;
     margin-right: 1rem;
-    border: 1px solid $primary-purple;
+    background: linear-gradient(to left, $primary-purple, $primary-blue);
     border-radius: 4px;
     font-weight: bold;
+    color: $white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+
+    &.danger {
+      background-color: $red;
+    }
   }
 }
 

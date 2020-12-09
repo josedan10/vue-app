@@ -36,25 +36,27 @@
         >
             <div class="col">
                 <label>Username: </label>
-                <input class="form-input" v-model="editUserData.username" />
+                <input class="form-input" placeholder="Username" v-model="editUserData.username" />
             </div>
             <div class="col">
                 <label>Name: </label>
-                <input class="form-input" v-model="editUserData.name" />
+                <input class="form-input" placeholder="Name" v-model="editUserData.name" />
             </div>
             <div class="col">
                 <label>Email: </label>
-                <input class="form-input" v-model="editUserData.email" />
+                <input class="form-input" placeholder="Email" v-model="editUserData.email" />
             </div>
             <div class="col">
                 <label>Phone: </label>
-                <input class="form-input" v-model="editUserData.phone" />
+                <input class="form-input" placeholder="Phone" v-model="editUserData.phone" />
             </div>
             <div class="col">
                 <label>Address: </label>
-                <input class="form-input" v-model="editUserData.address.street" />
-                <input class="form-input" v-model="editUserData.address.suite" />
-                <input class="form-input" v-model="editUserData.address.city" />
+                <div class="input-group">
+                    <input class="form-input" placeholder="Street" v-model="editUserData.address.street" />
+                    <input class="form-input" placeholder="Suite" v-model="editUserData.address.suite" />
+                    <input class="form-input" placeholder="City" v-model="editUserData.address.city" />
+                </div>
             </div>
 
             <div class="actions">
@@ -141,17 +143,24 @@ export default {
     }
 
     .form-input {
-        border: 0;
-        border-bottom: 1px solid $primary-blue;
-        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        border: 1px solid $primary-blue;
+        padding: 1rem 1.2rem;
         color: $primary-blue;
         transition: all ease .3s;
+        margin-left: 10px;
 
         &:focus {
             transition: all ease .3s;
             border-bottom: 1px solid $primary-purple;
             color: $primary-purple;
             outline: none;
+        }
+    }
+
+    .input-group {
+        .form-input {
+            margin: 1rem 0;
         }
     }
 
